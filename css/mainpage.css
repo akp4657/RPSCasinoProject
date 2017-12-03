@@ -1,0 +1,25 @@
+audio
+{
+    display:none;
+}
+
+div
+{
+    margin: 0 auto;
+    margin-top: 20%;
+    padding-bottom: 20px;
+    border: 1px solid black;
+    width: 50%;
+}
+
+button
+{
+    display: block;
+    margin: auto;
+    padding: 2px;
+}
+
+h1
+{
+    text-align: center;
+}
