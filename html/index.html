@@ -3,16 +3,60 @@
 <head>
     <title>RPS</title>
     <link rel="stylesheet" href="../css/mainpage.css">
+    <audio id="dorm">
+            <source src="../audio/dorm.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="fate">
+            <source src="../audio/fate.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="deal">
+            <source src="../audio/deal.mp3" type="audio/mpeg">
+        </audio>
 </head>
 <body>
     <div class="contain">
         <h1>PlaceholderTitle</h1>
         <button class="btn" id="play"><a href="rpsFirst.html">Play</a></button>
         <br>
-        <button class="btn" id="options">Options</button>
-        <audio controls autoplay loop>
-            <source src="../audio/deal.mp3" type="audio/mpeg">
-        </audio>
+        <button class="btn" id="options">Next Song</button>
     </div>
 </body>
+
+<script>
+    let i = 0;
+    let dorm = document.getElementById("dorm");
+    let fate = document.getElementById("fate");
+    let deal = document.getElementById("deal");
+    let playlist = [dorm, fate, deal];
+    let btn = document.getElementById("options");
+    console.log(playlist);
+    playlist[0].autoplay = true;
+    playlist[0].volume = 0.3;
+    playlist[0].loop = true;
+
+    function goThrough()
+    {
+        i++;
+        if(i >= 0 && i <= 2)
+        {
+            if(i > 0)
+            {
+                playlist[i-1].pause();
+                playlist[i-1].currentTime = 0;
+            }
+            playlist[i].play();
+            playlist[i].loop = true;
+            playlist[2].volume = 0.1;
+            playlist[1].volume = 0.1;
+            playlist[0].volume = 0.3;
+        }
+        else
+        {
+            playlist[2].pause();
+            playlist[2].currentTime = 0;
+            i = -1;
+        }
+    }
+    btn.addEventListener("click", goThrough);
+</script>
 </html>

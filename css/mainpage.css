@@ -1,15 +1,25 @@
+body
+{
+    background: url("../images/table.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+}
+
 audio
 {
     display:none;
 }
 
-div
+.contain
 {
-    margin: 0 auto;
+    margin-left: 15%;
     margin-top: 20%;
     padding-bottom: 20px;
     border: 1px solid black;
-    width: 50%;
+    width: 20%;
+    height: 200px;
+    background-color: red;
 }
 
 button
