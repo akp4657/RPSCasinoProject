@@ -65,13 +65,15 @@
         }
         function DrawCard() 
         {
+            if (this.cards.length > 0)
             for(let i = 0; i<3;i++)
             {
-                if (this.cards.length > 0)
+               
                 return this.cards.shift();
-                else
-                return null;
+                
             }
+            else
+                return null;
         }
         //Loops through the deck four times and swaps all 80 cards to a different order in the deck
         function ShuffleCards() {
@@ -92,30 +94,39 @@
         function CreateCard() {
             let cardNode, faceGraphic
 
-            cardNode = document.getElementById("playerHand");
+            cardNode = document.createElement("div")
             faceGraphic = document.createElement("img");
+            backGraphic = document.createElement("img");
             faceGraphic.id = "card";
             faceGraphic.className = "ui-widget-content";
             if (this.choices == "rock") {
-                faceGraphic.src = "rockCard.jpg";
+                faceGraphic.src = "rock.jpg";
+                backGraphic.src="cardBack"
             }
             if (this.choices == "paper") {
-                faceGraphic.src = "paperCard.jpg";
+                faceGraphic.src = "paper.jpg";
+                backGraphic.src="cardBack"
             }
             if (this.choices == "scissors") {
-                faceGraphic.src = "scissorsCard.jpg";
+                faceGraphic.src = "scissors.jpg";
+                backGraphic.src="cardBack"
             }
             cardNode.appendChild(faceGraphic);
             return cardNode;
         }
         let deck, dealerHand, playerHand,playerScore,dealerScore;
+        let playerScoreText, dealerScoreText;
         window.onload = init;
         function init() {
             deck = new Stack();
             dealerHand = new Hand("dealerHand")
             playerHand = new Hand("playerHand");
+            playerScoreText =document.getElementById("playerScore");
+            dealerScoreText = document.getElementById("dealerScore");
         }
-        Hand.prototype.leftMove = 0.2;
+        Hand.prototype.leftMove = 2.5;
+        Hand.prototype.topIncr = 0.2;
+        hand.prototype.rollEvery = 5;
         function Hand(id) {
             this.cards = new Array();
             this.handzone = document.getElementById(id)
@@ -202,7 +213,7 @@
         <div id="playerHand">
             <div class="owner">Player</div>
             <div id = "playerCards"class="ui-widget-header"></div>
-            <div id="plauerScore"></div>
+            <div id="playerScore"></div>
         </div>
     </div>
     <script>
