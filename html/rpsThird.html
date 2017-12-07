@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>rpsfirstversion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link href="css/styles.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+        crossorigin="anonymous"></script>
+        
+    <script>
+        // #region CardandDeckCreation
+
+        let choice = new Array("rock", "paper", "scissors");
+        let computerChoice;
+        let draw;
+
+        function Card(cardChoices) {
+            this.choice = cardChoices;
+        }
+        Card.prototype.create=function () {
+            let cardNode, faceGraphic
+
+            cardNode = document.createElement("div")
+            faceGraphic = document.createElement("img");
+            backGraphic = document.createElement("img");
+            faceGraphic.className = "ui-widget-content card";
+            let graphicSrc;
+            if (this.choice == "rock") {
+                graphicSrc = "rock.jpg";
+                
+            }
+            else if (this.choice == "paper") {
+                graphicSrc = "paper.jpg";
+                
+            }
+            else if (this.choice == "scissors") {
+                graphicSrc = "scissors.jpg";
+                
+            }
+            else if(this.choice=="lizard")
+            {
+                graphicSrc ="lizard.jpg"
+            }
+            else if(this.choice=="spock")
+            {
+                graphicSrc="spock.jpg"
+            }
+            faceGraphic.src="images/"+graphicSrc;
+            backGraphic.src="images/cardBack.jpg";
+            cardNode.appendChild(faceGraphic);
+            return cardNode;
+        }
+        //Helper Function that helpes deck of cards be used
+        function Stack() {
+            //Make empty array for deck
+            this.cards = new Array();
+                }
+        Stack.prototype.shuffle = function ShuffleCards() 
+        {
+            for (let i = 0; i < 5; i++) {
+                for (let j = 0; j < this.cards.length; j++) {
+                    let k = Math.floor(Math.random() * this.cards.length);
+                    temp = this.cards[j];
+                    this.cards[j] = this.cards[k];
+                    this.cards[k] = temp;
+                }
+            }
+        }
+        Stack.prototype.draw = function () 
+        {
+            console.log(this.cards);
+            let ret = null;
+            if(this.cards.length > 0) {
+              ret = Array(3);
+              for(let i = 0; i < 5; i++) {
+                  ret[i] = this.cards.pop();
+              }
+            }
+          
+          	return ret;
+        }
+        
+        Stack.prototype.cardCount =function () 
+        {
+            return this.cards.length;
+        }
+		Stack.prototype.CreateDeck = function(n) 
+        {
+            let options = new Array("rock", "paper", "scissors","lizard","spock")
+            this.cards = new Array(n);
+            for (let i = 0; i < n; i++) 
+            {
+                for (let j = 0; j < options.length; j++) 
+                {
+                    this.cards[i] = new Card(options[i % options.length]);
+                }
+            }
+        };
+        
+        
+        
+        //Loops through the deck four times and swaps all 80 cards to a different order in the deck
+        
+        //Returns length of cards in stack, helps with discard and hand management
+        
+
+        
+        let deck, dealRound, dealerHand, playerHand,playerScore,dealerScore;
+        let playerScoreText, dealerScoreText;
+        window.onload = init;
+        function init() {
+            deck = new Stack();
+            dealerHand = new Hand("dealer")
+            playerHand = new Hand("player");
+            playerScoreText =document.getElementById("playerScore");
+            dealerScoreText = document.getElementById("dealerScore");
+        }
+        Hand.prototype.leftMove = 2.5;
+        Hand.prototype.topIncr = 0.2;
+        Hand.prototype.rollEvery = 5;
+        function Hand(id) 
+        {
+            this.cards = new Array();
+            this.handzone = document.getElementById(id)
+            this.cardNode = document.getElementById(id + "Cards")
+            
+            
+        }
+        Hand.prototype.clear = function()
+        {
+            while (this.cardNode.lastChild)
+                {
+                    this.cardNode.removeChild(this.cardNode.lastChild);
+                }
+            this.cards = new Array();
+        }
+        Hand.prototype.reset =  function()
+        {
+            this.clear();
+            this.cards= new Array();
+        }
+        
+        Hand.prototype.add = function (card, ifDealers)
+        {
+            let number;
+            let node;
+            for(let i =0; i <card.length;i++)
+            {
+                this.cards[i]=card[i];
+                
+                node = this.cards[i].create();
+                this.cardNode.appendChild(node);
+                console.log(node);
+                
+      
+            }
+            
+        }
+        
+        
+        //# region DuringGame
+        function newDeck()
+        {
+            deck.CreateDeck(80);
+            deck.shuffle();
+        }
+        function getHand()
+        {
+            if(deck.cardCount()==0)
+            {
+                alert("New Deck");
+                newDeck(80);
+            }
+            return deck.draw();
+        }
+        function StartRound()
+        {
+            dealerHand.reset();
+            playerHand.reset();
+            dealRound=1;
+            DealRound();
+
+            $(".card").draggable({ revert: "invalid" });
+            $("#dropzone,playerCards,dealerCards").droppable({
+                accept:".card",
+                classes: {
+                    "ui-droppable-hover": "ui-state-hover"
+                },
+                drop: function (CompareCard, ui) {
+                    $(this)
+                        .addClass("ui-state-highlight")
+                        .find("p")
+                        .html("Dropped!");
+                }
+            });
+        }
+        function DealRound()
+        {
+            switch(dealRound)
+            {
+                case 1: playerHand.add(getHand(),false);
+                break;
+                case 2: dealerHand.add(getHand(),true);
+                break;
+                default: return; break;
+            }
+            dealRound++;
+            setTimeout(DealRound,600);
+                
+        }
+        function endRound()
+        {
+
+        }
+        //For positioning of hand
+    </script>
+</head>
+
+<body>
+    <div class="nav">
+    </div>
+    <div class="container">
+        <div id="dealer" class="ui-widget-header">
+            <div class="owner">Dealer</div>
+            <div id="dealerCards" class="ui_widget-header"></div>
+            <div id ="dealerScore"></div>
+        </div>
+        
+        <div id="dealer">
+            <!--<img onclick="dealCards" src="dealer.jpg" alt="cardDealer">-->
+        </div>
+        <div id="dropzone" class="ui-widget-header">
+            <p>Drag Card Here</p>
+        </div>
+        <div id="player">
+            <div class="owner">Player</div>
+            <div id = "playerCards"class="ui-widget-header"></div>
+            <div id="playerScore"></div>
+        </div>
+    </div>
+    <form id="gamebuttons" action="">
+        <div id="controlsArea">
+            <input id="deal" class="button" type="reset" value="Deal" onclick="StartRound();return false;">
+        </div>
+    </form>
+    <script>
+        function WinConditions() 
+        {
+
+        }
+    </script>
+</body>
+
+</html>
