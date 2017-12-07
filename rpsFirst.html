@@ -14,11 +14,175 @@
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
         crossorigin="anonymous"></script>
+        
     <script>
-        $(function () {
-            $("#card").draggable({ revert: "invalid" });
+        // #region CardandDeckCreation
+
+        let choice = new Array("rock", "paper", "scissors");
+        let computerChoice;
+        let draw;
+
+        function Card(cardChoices) {
+            this.choice = cardChoices;
+        }
+        Card.prototype.create=function () {
+            let cardNode, faceGraphic
+
+            cardNode = document.createElement("div")
+            faceGraphic = document.createElement("img");
+            backGraphic = document.createElement("img");
+            faceGraphic.className = "ui-widget-content card";
+            let graphicSrc;
+            if (this.choice == "rock") {
+                graphicSrc = "rock.jpg";
+                
+            }
+            else if (this.choice == "paper") {
+                graphicSrc = "paper.jpg";
+                
+            }
+            else if (this.choice == "scissors") {
+                graphicSrc = "scissors.jpg";
+                
+            }
+            faceGraphic.src="images/"+graphicSrc;
+            backGraphic.src="images/cardBack.jpg";
+            cardNode.appendChild(faceGraphic);
+            return cardNode;
+        }
+        //Helper Function that helpes deck of cards be used
+        function Stack() {
+            //Make empty array for deck
+            this.cards = new Array();
+                }
+        Stack.prototype.shuffle = function ShuffleCards() 
+        {
+            for (let i = 0; i < 4; i++) {
+                for (let j = 0; j < this.cards.length; j++) {
+                    let k = Math.floor(Math.random() * this.cards.length);
+                    temp = this.cards[j];
+                    this.cards[j] = this.cards[k];
+                    this.cards[k] = temp;
+                }
+            }
+        }
+        Stack.prototype.draw = function () 
+        {
+            console.log(this.cards);
+            let ret = null;
+            if(this.cards.length > 0) {
+              ret = Array(3);
+              for(let i = 0; i < 3; i++) {
+                  ret[i] = this.cards.pop();
+              }
+            }
+          
+          	return ret;
+        }
+        
+        Stack.prototype.cardCount =function () 
+        {
+            return this.cards.length;
+        }
+		Stack.prototype.CreateDeck = function(n) 
+        {
+            let options = new Array("rock", "paper", "scissors")
+            this.cards = new Array(n);
+            for (let i = 0; i < n; i++) 
+            {
+                for (let j = 0; j < options.length; j++) 
+                {
+                    this.cards[i] = new Card(options[i % options.length]);
+                }
+            }
+        };
+        
+        
+        
+        //Loops through the deck four times and swaps all 80 cards to a different order in the deck
+        
+        //Returns length of cards in stack, helps with discard and hand management
+        
+
+        
+        let deck, dealRound, dealerHand, playerHand,playerScore,dealerScore;
+        let playerScoreText, dealerScoreText;
+        window.onload = init;
+        function init() {
+            deck = new Stack();
+            dealerHand = new Hand("dealer")
+            playerHand = new Hand("player");
+            playerScoreText =document.getElementById("playerScore");
+            dealerScoreText = document.getElementById("dealerScore");
+        }
+        Hand.prototype.leftMove = 2.5;
+        Hand.prototype.topIncr = 0.2;
+        Hand.prototype.rollEvery = 5;
+        function Hand(id) 
+        {
+            this.cards = new Array();
+            this.handzone = document.getElementById(id)
+            this.cardNode = document.getElementById(id + "Cards")
+            
+            
+        }
+        Hand.prototype.clear = function()
+        {
+            while (this.cardNode.lastChild)
+                {
+                    this.cardNode.removeChild(this.cardNode.lastChild);
+                }
+            this.cards = new Array();
+        }
+        Hand.prototype.reset =  function()
+        {
+            this.clear();
+            this.cards= new Array();
+        }
+        
+        Hand.prototype.add = function (card, ifDealers)
+        {
+            let number;
+            let node;
+            for(let i =0; i <card.length;i++)
+            {
+                this.cards[i]=card[i];
+                
+                node = this.cards[i].create();
+                this.cardNode.appendChild(node);
+                console.log(node);
+                
+      
+            }
+            
+        }
+        
+        
+        //# region DuringGame
+        function newDeck()
+        {
+            deck.CreateDeck(80);
+            deck.shuffle();
+        }
+        function getHand()
+        {
+            if(deck.cardCount()==0)
+            {
+                alert("New Deck");
+                newDeck(80);
+            }
+            return deck.draw();
+        }
+        function StartRound()
+        {
+            dealerHand.reset();
+            playerHand.reset();
+            dealRound=1;
+            DealRound();
+
+            $(".card").draggable({ revert: "invalid" });
             $("#dropzone,playerCards,dealerCards").droppable({
-                accept:"#card",
+                accept:".card",
                 classes: {
                     "ui-droppable-hover": "ui-state-hover"
                 },
@@ -29,163 +193,20 @@
                         .html("Dropped!");
                 }
             });
-        });
-    </script>
-    <script>
-        // #region CardandDeckCreation
-
-        let choice;
-        let computerChoice;
-        let draw;
-        function Card(choices) {
-            this.choice = choices
         }
-        //Helper Function that helpes deck of cards be used
-        function Stack() {
-            //Make empty array for deck
-            this.cards = new Array(80);
-            this.makeDeck = CreateDeck;
-            this.shuffle = ShuffleCards;
-            this.draw = DrawCard;
-            this.cardCount = StackCardCount;
-            this.result = CompareCard;
-
-
-        }
-        function CreateDeck(n) {
-
-            let options = new Array("rock", "paper", "scissors")
-            this.cards = new Array(n);
-            for (let i = 0; i < n; i++) {
-                for (let j = 0; j < options.length; j++) {
-                    this.cards[j] = new Card(options[j]);
-
-                }
-            }
-        }
-        function DrawCard() 
+        function DealRound()
         {
-            if (this.cards.length > 0)
-            for(let i = 0; i<3;i++)
+            switch(dealRound)
             {
-               
-                return this.cards.shift();
+                case 1: playerHand.add(getHand(),false);
+                break;
+                case 2: dealerHand.add(getHand(),true);
+                break;
+                default: return; break;
+            }
+            dealRound++;
+            setTimeout(DealRound,600);
                 
-            }
-            else
-                return null;
-        }
-        //Loops through the deck four times and swaps all 80 cards to a different order in the deck
-        function ShuffleCards() {
-            for (let i = 0; i < 4; i++) {
-                for (let j = 0; j < cards.length; j++) {
-                    let k = Math.floor(Math.random() * this.deck.length);
-                    temp = this.choice[j];
-                    this.cards[j] = this.cards[k];
-                    this.cards[k] = temp;
-                }
-            }
-        }
-        //Returns length of cards in stack, helps with discard and hand management
-        function StackCardCount() {
-            return this.cards.length;
-        }
-
-        function CreateCard() {
-            let cardNode, faceGraphic
-
-            cardNode = document.createElement("div")
-            faceGraphic = document.createElement("img");
-            backGraphic = document.createElement("img");
-            faceGraphic.id = "card";
-            faceGraphic.className = "ui-widget-content";
-            if (this.choices == "rock") {
-                faceGraphic.src = "rock.jpg";
-                backGraphic.src="cardBack"
-            }
-            if (this.choices == "paper") {
-                faceGraphic.src = "paper.jpg";
-                backGraphic.src="cardBack"
-            }
-            if (this.choices == "scissors") {
-                faceGraphic.src = "scissors.jpg";
-                backGraphic.src="cardBack"
-            }
-            cardNode.appendChild(faceGraphic);
-            return cardNode;
-        }
-        let deck, dealerHand, playerHand,playerScore,dealerScore;
-        let playerScoreText, dealerScoreText;
-        window.onload = init;
-        function init() {
-            deck = new Stack();
-            dealerHand = new Hand("dealerHand")
-            playerHand = new Hand("playerHand");
-            playerScoreText =document.getElementById("playerScore");
-            dealerScoreText = document.getElementById("dealerScore");
-        }
-        Hand.prototype.leftMove = 2.5;
-        Hand.prototype.topIncr = 0.2;
-        hand.prototype.rollEvery = 5;
-        function Hand(id) {
-            this.cards = new Array();
-            this.handzone = document.getElementById(id)
-            this.cards = document.getElementById(id + "Cards")
-            this.add = AddCard;
-            this.clear = ClearHand;
-            this.score = CalcScore;
-        }
-        function AddCard(card, ifDealers)
-        {
-            let number;
-            let node;
-            for(let i =0; i <card.length;i++)
-            {
-                this.cards[i]=card[i];
-            }
-            if (down)
-            node.firstChild.style.visibility = "hidden";
-
-            // Add the card display to the associated card area on the page.
-            //The part where we customize the animation of the cards going into the hand
-            node.style.left = this.left + "em";
-            node.style.top  = this.top  + "em";
-            this.cardsNode.appendChild(node);
-            this.left += this.leftIncr;
-            if (this.cards.length % this.rollEvery == 0)
-            this.top = 0;
-            else
-            this.top += this.topIncr;
-            this.cards[n]=card;
-            
-        }
-        function ClearHand()
-        {
-            while (this.cardsNode.lastChild)
-            this.cardsNode.removeChild(this.cardsNode.lastChild);
-            this.cards = new Array();
-        }
-        //# region DuringGame
-        function newDeck()
-        {
-            deck.makeDeck();
-            deck.ShuffleCards();
-        }
-        function getHand()
-        {
-            if(deck.cardCount()==0)
-            {
-                alert("New Deck");
-                newDeck();
-            }
-            return deck.DrawCard();
-        }
-        function StartRound()
-        {
-            dealerHand.clear();
-            playerHand.clear();
-            playerHand.AddCard(getHand(),false);
-            dealerHand.AddCard(getHand(),true);
         }
         function endRound()
         {
@@ -199,25 +220,32 @@
     <div class="nav">
     </div>
     <div class="container">
-        <div id="dealerHand" class="ui-widget-header">
+        <div id="dealer" class="ui-widget-header">
             <div class="owner">Dealer</div>
             <div id="dealerCards" class="ui_widget-header"></div>
             <div id ="dealerScore"></div>
         </div>
+        
         <div id="dealer">
-            <img onclick="dealCards" src="dealer.jpg" alt="cardDealer">
+            <!--<img onclick="dealCards" src="dealer.jpg" alt="cardDealer">-->
         </div>
         <div id="dropzone" class="ui-widget-header">
             <p>Drag Card Here</p>
         </div>
-        <div id="playerHand">
+        <div id="player">
             <div class="owner">Player</div>
             <div id = "playerCards"class="ui-widget-header"></div>
             <div id="playerScore"></div>
         </div>
     </div>
+    <form id="gamebuttons" action="">
+        <div id="controlsArea">
+            <input id="deal" class="button" type="reset" value="Deal" onclick="StartRound();return false;">
+        </div>
+    </form>
     <script>
-        function WinConditions() {
+        function WinConditions() 
+        {
 
         }
     </script>
