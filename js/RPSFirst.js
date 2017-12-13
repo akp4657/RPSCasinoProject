@@ -186,7 +186,7 @@ function StartRound()
             $(this)
             playerCardPlayed ="rock";
             ComputerPlay();
-            alert(playerCardPlayed+"Dealer Played"+dealerCardPlayed);
+            alert("You Played: "+playerCardPlayed+"\nDealer Played"+dealerCardPlayed);
             CompareCard(dealerCardPlayed,playerCardPlayed);
         }
     });
@@ -199,7 +199,7 @@ function StartRound()
             $(this)
             playerCardPlayed ="paper";
             ComputerPlay();
-            alert("You played: "+playerCardPlayed+"Dealer Played: "+dealerCardPlayed);
+            alert("You Played: "+playerCardPlayed+"\nDealer Played: "+dealerCardPlayed);
             CompareCard(dealerCardPlayed,playerCardPlayed);
         }
     });
@@ -214,7 +214,7 @@ function StartRound()
             $(this)
             playerCardPlayed ="scissors";
             ComputerPlay();
-            alert("You played"+playerCardPlayed+"Dealer Played: "+dealerCardPlayed);
+            alert("You Played: "+playerCardPlayed+"\nDealer Played: "+dealerCardPlayed);
             CompareCard(dealerCardPlayed,playerCardPlayed);
         }
     });
@@ -241,19 +241,23 @@ function DealRound()
 
 function TieRound()
 {
-    alert("You tied")
+    alert("You tied");
     playerHand.reset();
     dealerHand.reset();
 }
 function LoseRound()
 {
-    alert("You Lose")
+    alert("You Lose");
     playerHand.reset();
     dealerHand.reset();
 }
-function WinRound()
+function WinRound(target)
 {
-    alert("You Win")
+    alert("You Win");
+    anime ({
+        targets: target,
+        rotate: '1turn'
+    })
     playerHand.reset();
     dealerHand.reset();
 }
@@ -270,7 +274,7 @@ function CompareCard(dealerCardPlayed, playerCardPlayed)
         {
             if(playerCardPlayed=="scissors")
             {
-                WinRound();
+                WinRound('#dropzoneScissors'); 
             }
             if (playerCardPlayed=="rock")
             {
@@ -281,7 +285,7 @@ function CompareCard(dealerCardPlayed, playerCardPlayed)
     {
         if(playerCardPlayed=="rock")
         {
-            WinRound();
+            WinRound('#dropzoneRock');
         }
          if(playerCardPlayed =="paper" )
         {
@@ -291,8 +295,8 @@ function CompareCard(dealerCardPlayed, playerCardPlayed)
      else if(dealerCardPlayed="rock")
         {
         if(playerCardPlayed=="paper")
-        {
-            WinRound();
+        { 
+            WinRound('#dropzonePaper');
         }
         if (playerCardPlayed=="scissors")
         {
@@ -322,7 +326,4 @@ function ComputerPlay()
         dealerHand.cards.pop();
     }
 }//Creating card deck
-        
-        
-        
         

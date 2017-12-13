@@ -13,6 +13,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.js"></script>
     <script src="../js/RPSFirst.js"></script>
     <audio id="fate">
         <source src="../audio/fate.mp3" type="audio/mpeg">
@@ -62,7 +63,7 @@
         <div id="gamebuttons" action="">
             <!-- Start Button-->
             <input id="deal" class="btn" type="reset" value="Deal" onclick="StartRound();return false;">
-            <button class="btn" id="options">Next Song</button>
+            <input type="reset" class="btn" value="Next Song" id="next"></input>
             <br>
             <br>
             <input id="test" type="range" min="0.0" max="1.0" step="0.1" onchange="changeVolume(this.value)"></input>
@@ -71,7 +72,7 @@
     </div>
     </div>
     <!-- Game Button containers-->
-
+    <script src="../js/anime.js"></script>
     <script src="../js/audio.js"></script>
 </body>
 </html>
