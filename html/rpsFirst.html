@@ -60,33 +60,12 @@ function Stack() {
  //int value within the amount of cards in the deck and swap index with another card
 Stack.prototype.shuffle = function () 
 {
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 20; i++) {
         for (let j = 0; j < this.cards.length; j++) {
             let k = Math.floor(Math.random() * this.cards.length);
             temp = this.cards[j];
             this.cards[j] = this.cards[k];
             this.cards[k] = temp;
-            cardNode = document.createElement("div")
-            faceGraphic = document.createElement("img");
-            backGraphic = document.createElement("img");
-            faceGraphic.className = "ui-widget-content card";
-            let graphicSrc;
-            if (this.choice == "rock") {
-                graphicSrc = "rock.jpg";
-                
-            }
-            else if (this.choice == "paper") {
-                graphicSrc = "paper.jpg";
-                
-            }
-            else if (this.choice == "scissors") {
-                graphicSrc = "scissors.jpg";
-                
-            }
-            faceGraphic.src="../images/"+graphicSrc;
-            backGraphic.src="../images/cardBack.jpg";
-            cardNode.appendChild(faceGraphic);
-            return cardNode;
         }
     }
 }
@@ -186,8 +165,9 @@ Hand.prototype.add = function (card)
 //# region DuringGame functions
 function newDeck()
 {
-    deck.CreateDeck(80);
+    deck.CreateDeck(200);
     deck.shuffle();
+    
 }
 /* Give cards to computer and player, if no cards left in deck make new deck
 */
@@ -196,7 +176,7 @@ function getHand()
     if(deck.cardCount()==0)
     {
         alert("New Deck");
-        newDeck(80);
+        newDeck(200);
     }
     return deck.draw();
 }
@@ -264,8 +244,6 @@ function DealRound()
 {
     while(dealerHand.cards.length<1)
     {
-
-    
     switch(dealRound)
     {
         case 1: playerHand.add(getHand());
@@ -349,14 +327,17 @@ function ComputerPlay()
     if(randomChance<0.33)
     {
         dealerCardPlayed = dealerHand.cards[0].choice;
+        dealerHand.cards.shift();
     }
     else if(randomChance>0.33&&randomChance>0.66)
     {
         dealerCardPlayed = dealerHand.cards[1].choice;
+       
     }
     else
     {
         dealerCardPlayed =dealerHand.cards[2].choice;
+        dealerHand.cards.pop();
     }
 }
  </script>
