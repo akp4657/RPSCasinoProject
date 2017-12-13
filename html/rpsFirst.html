@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<<<<<<< HEAD:rpsFirst.html
   
     <link href="css/styles.css" type="text/css" rel="stylesheet" media="screen,projection" />
-=======
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
     <link href="../css/styles.css" type="text/css" rel="stylesheet" media="screen,projection" />
->>>>>>> bc833bcc4f96e7c9559d4b5985b299f380a20187:html/rpsFirst.html
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
         crossorigin="anonymous"></script>
@@ -49,7 +46,7 @@ Card.prototype.create=function () {
         Graphic.className = "scissorsCard ui-widget-content";
     }
    
-    Graphic.src="images/"+graphicSrc;
+    Graphic.src="../images/"+graphicSrc;
     cardNode.appendChild(Graphic);
     return cardNode;
 }
@@ -59,7 +56,6 @@ function Stack() {
     this.cards = new Array();
         }
 
-<<<<<<< HEAD:rpsFirst.html
  //Loops through the deck four times and swaps all 80 cards to a different order in the deck by randomly choosing an
  //int value within the amount of cards in the deck and swap index with another card
 Stack.prototype.shuffle = function () 
@@ -70,7 +66,6 @@ Stack.prototype.shuffle = function ()
             temp = this.cards[j];
             this.cards[j] = this.cards[k];
             this.cards[k] = temp;
-=======
             cardNode = document.createElement("div")
             faceGraphic = document.createElement("img");
             backGraphic = document.createElement("img");
@@ -92,7 +87,6 @@ Stack.prototype.shuffle = function ()
             backGraphic.src="../images/cardBack.jpg";
             cardNode.appendChild(faceGraphic);
             return cardNode;
->>>>>>> bc833bcc4f96e7c9559d4b5985b299f380a20187:html/rpsFirst.html
         }
     }
 }
