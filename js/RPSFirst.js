@@ -241,23 +241,19 @@ function DealRound()
 
 function TieRound()
 {
-    alert("You tied");
+    alert("You tied")
     playerHand.reset();
     dealerHand.reset();
 }
 function LoseRound()
 {
-    alert("You Lose");
+    alert("You Lose")
     playerHand.reset();
     dealerHand.reset();
 }
-function WinRound(target)
+function WinRound()
 {
-    alert("You Win");
-    anime ({
-        targets: target,
-        rotate: '1turn'
-    })
+    alert("You Win")
     playerHand.reset();
     dealerHand.reset();
 }
@@ -274,7 +270,15 @@ function CompareCard(dealerCardPlayed, playerCardPlayed)
         {
             if(playerCardPlayed=="scissors")
             {
-                WinRound('#dropzoneScissors'); 
+                anime({
+                    targets: '#dropzoneScissors',
+                    rotate:{
+                      value: '1turn',
+                      easing: 'easeInOutSine'
+                    },
+                    loop: 2
+                  }); 
+                WinRound(); 
             }
             if (playerCardPlayed=="rock")
             {
@@ -285,7 +289,15 @@ function CompareCard(dealerCardPlayed, playerCardPlayed)
     {
         if(playerCardPlayed=="rock")
         {
-            WinRound('#dropzoneRock');
+            anime({
+                targets: '#dropzoneRock',
+                rotate:{
+                  value: '1turn',
+                  easing: 'easeInOutSine'
+                },
+                loop: 2
+              }); 
+            WinRound(); 
         }
          if(playerCardPlayed =="paper" )
         {
@@ -295,8 +307,16 @@ function CompareCard(dealerCardPlayed, playerCardPlayed)
      else if(dealerCardPlayed="rock")
         {
         if(playerCardPlayed=="paper")
-        { 
-            WinRound('#dropzonePaper');
+        {
+            anime({
+                targets: '#dropzonePaper',
+                rotate:{
+                  value: '1turn',
+                  easing: 'easeInOutSine'
+                },
+                loop: 2
+              });  
+            WinRound();
         }
         if (playerCardPlayed=="scissors")
         {
