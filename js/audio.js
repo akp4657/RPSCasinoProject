@@ -1,44 +1,41 @@
 let i = 0;
+let king = document.getElementById("king");
 let dorm = document.getElementById("dorm");
 let fate = document.getElementById("fate");
 let deal = document.getElementById("deal");
-let playlist = [dorm, fate, deal];
+let face = document.getElementById("face");
+let playlist = [fate, face, king, dorm, deal];
 let btn = document.getElementById("options");
-let vol = document.getElementById("test").value;
-console.log(vol);
 playlist[0].autoplay = true;
-playlist[0].volume = vol;
 playlist[0].loop = true;
+playlist[0].volume = 0;
 
 function goThrough()
 {
     i++;
-    if(i >= 0 && i <= 2)
+    if(i>= 0 && i <= 4)
     {
         if(i > 0)
-        {
-            playlist[i-1].pause();
-            playlist[i-1].currentTime = 0;
+        {   
+        playlist[i-1].pause();
+        playlist[i-1].currentTime = 0;
         }
         playlist[i].play();
         playlist[i].loop = true;
-        playlist[2].volume = vol;
-        playlist[1].volume = vol;
-        playlist[0].volume = vol;
-    }
-    else
-    {
-        playlist[2].pause();
-        playlist[2].currentTime = 0;
-        i = -1;
-    }
+        playlist[i].volume = .5;
 }
-
-function changeVolume(sliderID, volume)
+else
 {
-    number = document.getElementById(sliderID)
-    volume = number.value;
+    playlist[4].pause();
+    playlist[4].currentTime = 0;
+    i = -1;
+}
 }
 
-window.onload = changeVolume("test", playlist[i].volume);
+function changeVolume(amount)
+{
+    let audioobject = playlist[i];
+    audioobject.volume = amount;
+}
+
 btn.addEventListener("click", goThrough);

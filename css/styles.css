@@ -1,15 +1,13 @@
-#dealer
-{
 
-}
 /*Css for row of dealer cards
 */
 .dealerCards::after
 {
     content: ",";
-    display: table;
     clear: both;
-    margin: 0 auto;
+    height: 200px;
+    width: 500px;
+    border: 1px solid black;
 }
 .ui-widget-content
 {
@@ -23,7 +21,7 @@
 {
     
     content: ",";
-    display: table;
+    display: inline-block;
     clear: both;
     padding-top: 100px;
 }
@@ -71,15 +69,14 @@
 }
 
 .container{
-    border: 1px solid black;
     height: 1000px;
     width: 100%;
     margin: 0 auto;
+    text-align: center;
 }
 
 .row
 {
-    border: 1px solid black;
     width: 90%;
     margin: 0 auto;
     overflow: hidden;
@@ -95,7 +92,7 @@
     margin-top: -800px;
 }
 
-.button
+.btn
 {
     margin-left: 50px;
     height: 50px;
@@ -103,10 +100,9 @@
 
 #player
 {
-    border: 1px solid black;
     height: 300px;
     width: 50%;
-    margin-left: 350px;
+    display: inline-block;
 }
 
 #dealerRow
@@ -114,5 +110,10 @@
     border: 1px solid black;
     height: 300px;
     width: 50%;
-    margin-left: 350px;
+    display: inline-block;
+}
+
+img
+{
+    padding-left: 100px;
 }
