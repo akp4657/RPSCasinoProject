@@ -1,6 +1,25 @@
-// #region CardandDeckCreation
+<!DOCTYPE html>
+<html lang="en">
 
-        let choice = new Array("rock", "paper", "scissors,lizard,spock");
+<head>
+    <title>rpsfirstversion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link href="css/RPS3styles.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.3/lib/draggable.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.3/lib/droppable.js"></script>
+    <script>
+        // #region CardandDeckCreation
+
+        let choice = new Array("rock", "paper", "scissors");
         let computerChoice;
         let draw;
         //Card Constructor stores the coices: rock paper, scissors
@@ -32,17 +51,7 @@ img draggable that represents a specific card value
                 graphicSrc = "scissors.jpg";
                 Graphic.className = "scissorsCard ui-widget-content";
             }
-           else if(this.choice=="lizard")
-           {
-               graphicSrc="lizard.jpg";
-               Graphic.className = "lizardCard ui-widget-content";
-           }
-           else if(this.choice=="spock")
-           {
-               graphicSrc = "spock.jpg";
-               Graphic.className="spockCard ui-widget-content"
-           }
-            Graphic.src="../images/"+graphicSrc;
+            Graphic.src="images/"+graphicSrc;
             cardNode.appendChild(Graphic);
             return cardNode;
         }
@@ -69,8 +78,8 @@ img draggable that represents a specific card value
             console.log(this.cards);
             let ret = null;
             if(this.cards.length > 0) {
-              ret = Array(5);
-              for(let i = 0; i < 5; i++) {
+              ret = Array(3);
+              for(let i = 0; i < 3; i++) {
                   ret[i] = this.cards.pop();
               }
             }
@@ -86,7 +95,7 @@ img draggable that represents a specific card value
         //adds them in iteratively, shuffle deck in separate function
 		Stack.prototype.CreateDeck = function(n) 
         {
-            let options = new Array("rock", "paper", "scissors","lizard","spock")
+            let options = new Array("rock", "paper", "scissors")
             this.cards = new Array(n);
             for (let i = 0; i < n; i++) 
             {
@@ -190,8 +199,6 @@ img draggable that represents a specific card value
             $(".rockCard").draggable({ revert: "invalid" });
             $(".paperCard").draggable({ revert: "invalid" });
             $(".scissorsCard").draggable({ revert: "invalid" });
-            $(".spockCard").draggable({ revert: "invalid" });
-            $(".lizardCard").draggable({ revert: "invalid" });
             $("#dropzoneRock").droppable({
                 accept:".rockCard",
                 classes: {
@@ -202,7 +209,7 @@ img draggable that represents a specific card value
                     $(this)
                     playerCardPlayed ="rock";
                     ComputerPlay();
-                    alert("You played: "+playerCardPlayed+"\nDealer Played: "+dealerCardPlayed);
+                    alert("You played"+playerCardPlayed+" Dealer Played: "+dealerCardPlayed);
                     CompareCard(dealerCardPlayed,playerCardPlayed);
                 }
             });
@@ -215,7 +222,7 @@ img draggable that represents a specific card value
                     $(this)
                     playerCardPlayed ="paper";
                     ComputerPlay();
-                    alert("You played: "+playerCardPlayed+"\nDealer Played: "+dealerCardPlayed);
+                    alert("You played"+playerCardPlayed+" Dealer Played: "+dealerCardPlayed);
                     CompareCard(dealerCardPlayed,playerCardPlayed);
                 }
             });
@@ -230,37 +237,7 @@ img draggable that represents a specific card value
                     $(this)
                     playerCardPlayed ="scissors";
                     ComputerPlay();
-                    alert("You played: "+playerCardPlayed+"\nDealer Played: "+dealerCardPlayed);
-                    CompareCard(dealerCardPlayed,playerCardPlayed);
-                }
-            });
-            $("#dropzoneSpock").droppable({
-                activeClass: "ui-state-highlight",
-                accept:".spockCard",
-                classes: {
-                    "ui-droppable-hover": "ui-state-hover"
-                    
-                },
-                drop: function (event, ui) {
-                    $(this)
-                    playerCardPlayed ="spock";
-                    ComputerPlay();
-                    alert("You played: "+playerCardPlayed+"\nDealer Played: "+dealerCardPlayed);
-                    CompareCard(dealerCardPlayed,playerCardPlayed);
-                }
-            });
-            $("#dropzoneLizard").droppable({
-                activeClass: "ui-state-highlight",
-                accept:".lizardCard",
-                classes: {
-                    "ui-droppable-hover": "ui-state-hover"
-                    
-                },
-                drop: function (event, ui) {
-                    $(this)
-                    playerCardPlayed ="lizard";
-                    ComputerPlay();
-                    alert("You played: "+playerCardPlayed+"\nDealer Played: "+dealerCardPlayed);
+                    alert("You played: "+playerCardPlayed+" Dealer Played: "+dealerCardPlayed);
                     CompareCard(dealerCardPlayed,playerCardPlayed);
                 }
             });
@@ -270,8 +247,6 @@ img draggable that represents a specific card value
         */
         function DealRound()
         {
-            while(dealerHand.cards.length<1)
-            {
             switch(dealRound)
             {
                 case 1: playerHand.add(getHand());
@@ -281,11 +256,12 @@ img draggable that represents a specific card value
                 default: return; break;
             }
             dealRound++;
-        }
+            
+                
         }
         function ResetRound()
         {
-            alert("Unfortunate, it is a tie.");
+            alert("You tied")
             playerHand.reset();
             dealerHand.reset();
         }
@@ -293,13 +269,13 @@ img draggable that represents a specific card value
         {
             dealerScore++;
             dealerScoreText.appendChild(dealerScore);
-            alert("What a shame, the house wins.");
+            alert("You Lose")
             playerHand.reset();
             dealerHand.reset();
         }
         function WinRound()
         {
-            alert("Congratulations, you win!");
+            alert("You Win")
             playerScore++;
             playerScoreText.appendChild(playerScore);
             playerHand.reset();
@@ -318,33 +294,9 @@ img draggable that represents a specific card value
                 {
                     if(playerCardPlayed=="scissors")
                     {
-                        anime({
-                            targets: '#dropzoneScissors',
-                            rotate:{
-                              value: '1turn',
-                              easing: 'easeInOutSine'
-                            },
-                            loop: 2
-                          });
-                        WinRound();
-                    }
-                    if(playerCardPlayed=="lizard")
-                    {
-                        anime({
-                            targets: '#dropzoneLizard',
-                            rotate:{
-                              value: '1turn',
-                              easing: 'easeInOutSine'
-                            },
-                            loop: 2
-                          }); 
                         WinRound();
                     }
                     if (playerCardPlayed=="rock")
-                    {
-                        LoseRound();
-                    }
-                    if(playerCardPlayed=="spock")
                     {
                         LoseRound();
                     }
@@ -352,34 +304,10 @@ img draggable that represents a specific card value
             else if(dealerCardPlayed=="scissors")
             {
                 if(playerCardPlayed=="rock")
-                { 
-                    anime({
-                    targets: '#dropzoneRock',
-                    rotate:{
-                      value: '1turn',
-                      easing: 'easeInOutSine'
-                    },
-                    loop: 2
-                  }); 
-                    WinRound();
-                }
-                if(playerCardPlayed=="spock")
                 {
-                    anime({
-                        targets: '#dropzoneSpock',
-                        rotate:{
-                          value: '1turn',
-                          easing: 'easeInOutSine'
-                        },
-                        loop: 2
-                      }); 
                     WinRound();
                 }
                  if(playerCardPlayed =="paper" )
-                {
-                    LoseRound();
-                }
-                if(playerCardPlayed=="lizard")
                 {
                     LoseRound();
                 }
@@ -388,107 +316,14 @@ img draggable that represents a specific card value
             {
                 if(playerCardPlayed=="paper")
                 {
-                    anime({
-                        targets: '#dropzonePaper',
-                        rotate:{
-                          value: '1turn',
-                          easing: 'easeInOutSine'
-                        },
-                        loop: 2
-                      });  
-                    WinRound();
-                }
-                if(playerCardPlayed=="spock")
-                {
-                    anime({
-                        targets: '#dropzoneSpock',
-                        rotate:{
-                          value: '1turn',
-                          easing: 'easeInOutSine'
-                        },
-                        loop: 2
-                      }); 
                     WinRound();
                 }
                 if (playerCardPlayed=="scissors")
                 {
                     LoseRound();
                 }
-                if(playerCardPlayed=="lizard")
-                {
-                    LoseRound();
-                }
             }
-            else if(dealerCardPlayed=="lizard")
-            {
-                if(playerCardPlayed=="paper")
-                {
-                    anime({
-                        targets: '#dropzonePaper',
-                        rotate:{
-                          value: '1turn',
-                          easing: 'easeInOutSine'
-                        },
-                        loop: 2
-                      });  
-                    WinRound();
-                }
-                if(playerCardPlayed=="spock")
-                {
-                    anime({
-                        targets: '#dropzoneSpock',
-                        rotate:{
-                          value: '1turn',
-                          easing: 'easeInOutSine'
-                        },
-                        loop: 2
-                      }); 
-                    WinRound();
-                }
-                if (playerCardPlayed=="scissors")
-                {
-                    LoseRound();
-                }
-                if(playerCardPlayed=="rock")
-                {
-                    LoseRound();
-                }
-            }
-            else if(dealerCardPlayed=="spock")
-            {
-                if(playerCardPlayed=="paper")
-                {
-                    anime({
-                        targets: '#dropzonePaper',
-                        rotate:{
-                          value: '1turn',
-                          easing: 'easeInOutSine'
-                        },
-                        loop: 2
-                      });  
-                    WinRound();
-                }
-                if(playerCardPlayed=="lizard")
-                {
-                    anime({
-                        targets: '#dropzoneLizard',
-                        rotate:{
-                          value: '1turn',
-                          easing: 'easeInOutSine'
-                        },
-                        loop: 2
-                      }); 
-                    WinRound();
-                }
-                if (playerCardPlayed=="scissors")
-                {
-                    LoseRound();
-                }
-                if(playerCardPlayed=="rock")
-                {
-                    LoseRound();
-                }
-            }
+            
         }
         /* Function that is called after player drops card into drop zone, computer randomly selects a card from hand 
         array
@@ -496,25 +331,70 @@ img draggable that represents a specific card value
         function ComputerPlay()
         {
             let randomChance = Math.random();
-            if(randomChance<0.20)
+            if(randomChance<0.33)
             {
                 dealerCardPlayed = dealerHand.cards[0].choice;
             }
-            else if(randomChance<0.4&&randomChance>0.2)
+            else if(randomChance>0.33&&randomChance<0.66)
             {
                 dealerCardPlayed = dealerHand.cards[1].choice;
             }
-            else if(randomChance<0.6&&randomChance>0.4)
+            else
             {
                 dealerCardPlayed =dealerHand.cards[2].choice;
             }
-            else if(randomChance<0.8&&randomChance>0.6)
-            {
-                dealerCardPlayed =dealerHand.cards[3].choice;
-            }
-            else 
-            {
-                dealerCardPlayed =dealerHand.cards[4].choice;
-            }
+            
         }
         
+    </script>
+</head>
+
+<body>
+    <div class="nav">
+    </div>
+    <div class="container">
+        <!-- dealer Card Area-->
+        <div id="dealerRow">
+            <div class="owner">Dealer</div>
+            <div id="dealerCards" class="ui_widget-header"></div>
+            <div id ="dealerScoreBox"><p id="dealerScoreText"></p></div>
+        </div>
+        <div id="dealer">
+            <!--<img onclick="dealCards" src="dealer.jpg" alt="cardDealer">-->
+        </div>
+        <!--Creating Row of Drop zones for specific Cards -->
+        <div class="row">
+            <div id="dropzoneRock" class="ui-widget-header">
+                <p>Drag Rock Here</p>
+            </div>
+            <div id="dropzoneScissors" class="ui-widget-header">
+                <p>Drag Scissors Here</p>
+            </div>
+            <div id="dropzonePaper" class="ui-widget-header">
+                <p>Drag Paper Here</p>
+            </div>
+            <div id="dropzoneLizard" class="ui-widget-header">
+                <p>Drag Lizard Here</p>
+            </div>
+            <div id="dropZoneSpock" class="ui-widget-header">
+                <p>Drag Spock Here</p>
+            </div>
+        </div>
+        <!-- player card area-->
+    <div id="player">
+        
+        <div id = "playerCards"class="ui-widget-header"></div>
+        <div id="playerScore"></div>
+        <div id="playerScoreBox"><p id="playerScoreText"></p></div>
+        
+    </div>
+</div>
+    <!-- Game Button containers-->
+    <form id="gamebuttons" action="">
+        <div id="controlsArea">
+            <!-- Start Button-->
+            <input id="deal" class="button" type="reset" value="Deal" onclick="StartRound();return false;">
+        </div>
+    </form>
+</body>
+</html>

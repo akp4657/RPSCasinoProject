@@ -186,7 +186,7 @@ function StartRound()
             $(this)
             playerCardPlayed ="rock";
             ComputerPlay();
-            alert("You Played: "+playerCardPlayed+"\nDealer Played"+dealerCardPlayed);
+            alert("You Played: "+playerCardPlayed+"\nDealer Played: "+dealerCardPlayed);
             CompareCard(dealerCardPlayed,playerCardPlayed);
         }
     });
@@ -241,19 +241,19 @@ function DealRound()
 
 function TieRound()
 {
-    alert("You tied")
+    alert("Unfortunate, it is a tie.");
     playerHand.reset();
     dealerHand.reset();
 }
 function LoseRound()
 {
-    alert("You Lose")
+    alert("What a shame, the house wins.");
     playerHand.reset();
     dealerHand.reset();
 }
 function WinRound()
 {
-    alert("You Win")
+    alert("Congratulations, you win!");
     playerHand.reset();
     dealerHand.reset();
 }

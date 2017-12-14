@@ -1,17 +1,28 @@
-var buttonEl = document.querySelector('input');
+let dealButton= document.getElementsByClassName('dBtn');
+let nextButton = document.getElementsByClassName('nBtn');
 
 function animateButton(scale, duration, elasticity) {
-  anime.remove(buttonEl);
+  anime.remove(nextButton);
   anime({
-    targets: buttonEl,
+    targets: dealButton, nextButton,
     scale: scale,
     duration: duration,
     elasticity: elasticity
   });
 }
 
-function enterButton() { animateButton(1.2, 800, 400) };
-function leaveButton() { animateButton(1.0, 600, 300) };
+function enterButton() 
+{ 
+  animateButton(1.2, 800, 400) 
+};
 
-buttonEl.addEventListener('mouseenter', enterButton, false);
-buttonEl.addEventListener('mouseleave', leaveButton, false);
+function leaveButton() 
+{ 
+  animateButton(1.0, 600, 300) 
+};
+
+dealButton.addEventListener('mouseenter', enterButton);
+nextButton.addEventListener('mouseenter', enterButton);
+
+dealButton.addEventListener('mouseleave', leaveButton);
+nextButton.addEventListener('mouseleave', leaveButton);

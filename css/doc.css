@@ -1,3 +1,8 @@
+body
+{
+    font-family: 'Noto Serif', serif;
+}
+
 audio
 {
     display: none;
@@ -48,4 +53,17 @@ body
     padding-top: 10px;
     background: url("../images/redvelvet.svg");
     background-size: cover;
+}
+
+button
+{
+    transition: 1s;
+}
+
+button:hover
+{
+    color: white;
+    background-color: #009000;
+    transition: 1s;
+    cursor: pointer;
 }

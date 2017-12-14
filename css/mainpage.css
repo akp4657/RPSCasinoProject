@@ -4,6 +4,7 @@ body
     background-size: cover;
     background-repeat: no-repeat;
     background-color: black;
+    font-family: 'Noto Serif', serif;
 }
 
 audio
@@ -36,12 +37,14 @@ button:hover
     background-color: #009900;
     transition: 1s;
     color: white;
+    cursor: pointer;
 }
 
 h1
 {
     text-align: center;
     padding-top: 15px;
+    font-size: 25px;
     color: white;
 }
 
