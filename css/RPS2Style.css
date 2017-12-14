@@ -1,0 +1,176 @@
+body 
+{
+    background: url("../images/gamebackground.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+    font-family: 'Noto Serif', serif;
+}
+.dealerCards::after
+{
+    content: ",";
+    clear: both;
+    height: 200px;
+    width: 500px;
+    border: 1px solid black;
+}
+.ui-widget-content
+{
+    float: left;
+    width: 200px; 
+    height: 200px;
+}
+/* Css for row of player cards
+*/
+.playerCards::after
+{
+    
+    content: ",";
+    display: inline-block;
+    clear: both;
+    padding-top: 100px;
+}
+/*Css for row dropzone*/
+.row::after
+{
+    content: ",";
+    display: table;
+    clear: both;
+}
+#dropzonePaper
+{
+    width: 22%; 
+    height: 300px; 
+    padding: 0.5em; 
+    left: 50px;
+    border: 3px solid white;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 100px;
+    background: url("../images/redvelvet.svg");
+    background-size: cover;
+}
+#dropzoneScissors{
+    width: 22%; 
+    height: 300px; 
+    padding: 0.5em; 
+    left: 50px;
+    border: 3px solid white;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 100px;
+    background: url("../images/redvelvet.svg");
+    background-size: cover;
+}
+#dropzoneRock
+{
+    width: 22%;
+    height: 300px; 
+    padding: 0.5em; 
+    left: 50px;
+    border: 3px solid white;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 100px;
+    background: url("../images/redvelvet.svg");
+    background-size: cover;
+}
+
+.container{
+    height: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.row
+{
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 5px;
+    white-space: nowrap;
+}
+
+#gamebuttons
+{
+    border: 1px solid white;
+    width: 10%;
+    height: 160px;
+    margin-top: -1000px;
+    padding-top: 10px;
+    background: url("../images/redvelvet.svg");
+    background-size: cover;
+}
+
+.dBtn, .nBtn
+{
+    margin-left: 15px;
+    height: 30px;
+    transition: 1s;
+}
+.dBtn:hover, .nBtn:hover
+{
+    background-color: #009900;
+    transition: 1s;
+    color: white;
+    cursor: pointer;
+}
+
+#player
+{
+    height: 300px;
+    width: 50%;
+    display: inline-block;
+}
+
+#dealerRow
+{
+    height: 300px;
+    width: 50%;
+    display: inline-block;
+}
+
+img
+{
+    padding-left: 50px;
+}
+
+img:hover
+{
+    cursor: pointer;
+}
+
+h2, p
+{
+    color: white;
+}
+
+p
+{
+    font-weight: normal;
+    font-size: 20px;
+}
+
+button
+{
+    width: 50px;
+    transition: 1s;
+}
+
+button:hover
+{
+    background-color: #009900;
+    transition: 1s;
+    color: white;
+    cursor: pointer;
+}
+
+#test:hover
+{
+    cursor: pointer;
+}
+
