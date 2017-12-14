@@ -103,20 +103,20 @@ body
 {
     border: 1px solid white;
     width: 10%;
-    height: 160px;
+    height: 270px;
     margin-top: -1000px;
     padding-top: 10px;
     background: url("../images/redvelvet.svg");
     background-size: cover;
 }
 
-.dBtn, .nBtn
+.btn
 {
     margin-left: 15px;
     height: 30px;
     transition: 1s;
 }
-.dBtn:hover, .nBtn:hover
+.btn:hover, .back:hover
 {
     background-color: #009900;
     transition: 1s;
@@ -140,7 +140,7 @@ body
 
 img
 {
-    padding-left: 100px;
+    padding-left: 50px;
 }
 
 img:hover

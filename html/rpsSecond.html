@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>RPSLP</title>
+    <title>NCB</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
         crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.js"></script>
     <script src="../js/RPSSecond.js"></script>
     <audio id="fate">
         <source src="../audio/fate.mp3" type="audio/mpeg">
@@ -38,25 +39,23 @@
         <div id="dealerRow">
             <h2>Dealer</h2>
             <div id="dealerCards" class="ui_widget-header"></div>
-            <div id ="dealerScoreBox"><p id="dealerScoreText"></p></div>
         </div>
         <!--Creating Row of Drop zones for specific Cards -->
         <div class="row">
             <div id="dropzoneRock" class="ui-widget-header">
-                <p>Drag Rock Here</p>
+                <p>Drag Cowboy Here</p>
             </div>
             <div id="dropzoneScissors" class="ui-widget-header">
-                <p>Drag Scissors Here</p>
+                <p>Drag Bear Here</p>
             </div>
             <div id="dropzonePaper" class="ui-widget-header">
-                <p>Drag Paper Here</p>
+                <p>Drag Ninja Here</p>
             </div>
         </div>
         <!-- player card area-->
     <div id="player">
         <div id = "playerCards"class="ui-widget-header"></div>
-        <div id="playerScore"></div>
-        <div id="playerScoreBox"><p id="playerScoreText"></p></div>
+        
     </div>
     <h2>Player<h2>
         <div id="gamebuttons">
@@ -68,6 +67,9 @@
             <input id="test" type="range" min="0.0" max="1.0" step="0.1" onchange="changeVolume(this.value)"></input>
             <br>
             <button class="back" onclick="location.href='index.html'"><i class="fa fa-arrow-left"></i></button>
+            <div id="playerScore"></div>
+            <div id="playerScoreBox"><p id="playerScoreText"></p></div>
+            <div id ="dealerScoreBox"><p id="dealerScoreText"></p></div>
         </div>
 </div>
     <!-- Game Button containers-->

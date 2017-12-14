@@ -291,8 +291,6 @@ img draggable that represents a specific card value
         }
         function LoseRound()
         {
-            dealerScore++;
-            dealerScoreText.appendChild(dealerScore);
             alert("What a shame, the house wins.");
             playerHand.reset();
             dealerHand.reset();
@@ -300,8 +298,6 @@ img draggable that represents a specific card value
         function WinRound()
         {
             alert("Congratulations, you win!");
-            playerScore++;
-            playerScoreText.appendChild(playerScore);
             playerHand.reset();
             dealerHand.reset();
         }

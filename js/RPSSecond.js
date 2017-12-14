@@ -15,16 +15,16 @@ Card.prototype.create=function () {
     Graphic.style.height="200px";
     //img name variable
     let graphicSrc;
-    if (this.choice == "rock") {
-        graphicSrc = "rock.jpg";
+    if (this.choice == "Cowboy") {
+        graphicSrc = "boy.jpg";
         Graphic.className="rockCard ui-widget-content"
     }
-    else if (this.choice == "paper") {
-        graphicSrc = "paper.jpg";
+    else if (this.choice == "Ninja") {
+        graphicSrc = "ninja.jpg";
         Graphic.className = "paperCard ui-widget-content";
     }
-    else if (this.choice == "scissors") {
-        graphicSrc = "scissors.jpg";
+    else if (this.choice == "Bear") {
+        graphicSrc = "bear.jpg";
         Graphic.className = "scissorsCard ui-widget-content";
     }
    
@@ -73,7 +73,7 @@ Stack.prototype.cardCount =function ()
 //Takes in an options and loops through the options length based on amount of cards needed in deck
 Stack.prototype.CreateDeck = function(n) 
 {
-    let options = new Array("rock", "paper", "scissors")
+    let options = new Array("Cowboy", "Ninja", "Bear")
     this.cards = new Array(n);
     for (let i = 0; i < n; i++) 
     {
@@ -188,7 +188,7 @@ function StartRound()
          //After drop set the player's card to the right value, calculate computer play, and then compare card method
         drop: function (event, ui) {
             $(this)
-            playerCardPlayed ="rock";
+            playerCardPlayed ="Cowboy";
             ComputerPlay();
             alert("You Played: "+playerCardPlayed+"\nDealer Played: "+dealerCardPlayed);
             CompareCard(dealerCardPlayed,playerCardPlayed);
@@ -201,7 +201,7 @@ function StartRound()
         },
         drop: function (event, ui) {
             $(this)
-            playerCardPlayed ="paper";
+            playerCardPlayed ="Ninja";
             ComputerPlay();
             alert("You Played: "+playerCardPlayed+"\nDealer Played: "+dealerCardPlayed);
             CompareCard(dealerCardPlayed,playerCardPlayed);
@@ -216,7 +216,7 @@ function StartRound()
         },
         drop: function (event, ui) {
             $(this)
-            playerCardPlayed ="scissors";
+            playerCardPlayed ="Bear";
             ComputerPlay();
             alert("You Played: "+playerCardPlayed+"\nDealer Played: "+dealerCardPlayed);
             CompareCard(dealerCardPlayed,playerCardPlayed);
@@ -254,7 +254,7 @@ function LoseRound()
     dealerScore++;
     alert("What a shame, the house wins.");
     console.log(dealerScore);
-    dealerScoreText.innerHTML = `Score: ${dealerScore}`;
+    dealerScoreText.innerHTML = `House: ${dealerScore}`;
     playerHand.reset();
     dealerHand.reset();
     if(dealerScore==5)
@@ -267,7 +267,7 @@ function WinRound()
 {
     playerScore++;
     alert("Congratulations, you win!");
-    playerScoreText.innerHTML=`Score: ${playerScore}`;
+    playerScoreText.innerHTML=`Player: ${playerScore}`;
     playerHand.reset();
     dealerHand.reset();
     if(playerScore==5)
@@ -286,11 +286,11 @@ function CompareCard(dealerCardPlayed, playerCardPlayed)
     {
         TieRound();
     }
-    else if(dealerCardPlayed=="paper")
+    else if(dealerCardPlayed=="Ninja")
         {
-            if(playerCardPlayed=="scissors")
+            if(playerCardPlayed=="Bear")
             {
-                /*
+                
                 anime({
                     targets: '#dropzoneScissors',
                     rotate:{
@@ -299,23 +299,23 @@ function CompareCard(dealerCardPlayed, playerCardPlayed)
                     },
                     loop: 2
                   }); 
-                  */
+                  
                   
                 WinRound(); 
             }
-            if (playerCardPlayed=="rock")
+            if (playerCardPlayed=="Cowboy")
             {
                 
                 LoseRound();
                 
             }
         }
-    else if(dealerCardPlayed=="scissors")
+    else if(dealerCardPlayed=="Bear")
     {
-        if(playerCardPlayed=="rock")
+        if(playerCardPlayed=="Cowboy")
         {
            
-            /*
+            
             anime({
                 targets: '#dropzoneRock',
                 rotate:{
@@ -324,22 +324,21 @@ function CompareCard(dealerCardPlayed, playerCardPlayed)
                 },
                 loop: 2
               }); 
-              */
             WinRound(); 
              
         }
-         if(playerCardPlayed =="paper" )
+         if(playerCardPlayed =="Ninja" )
         {
 
             LoseRound();
             
         }
     }
-     else if(dealerCardPlayed="rock")
+     else if(dealerCardPlayed="Cowboy")
         {
-        if(playerCardPlayed=="paper")
+        if(playerCardPlayed=="Ninja")
         {
-               /*
+               
             anime({
                 targets: '#dropzonePaper',
                 rotate:{
@@ -348,11 +347,11 @@ function CompareCard(dealerCardPlayed, playerCardPlayed)
                 },
                 loop: 2
               });
-              */
+              
              
             WinRound();
         }
-        if (playerCardPlayed=="scissors")
+        if (playerCardPlayed=="Bear")
         {
             LoseRound();
         }
