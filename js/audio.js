@@ -8,7 +8,7 @@ let playlist = [fate, face, king, dorm, deal];
 let btn = document.getElementById("next");
 playlist[0].autoplay = true;
 playlist[0].loop = true;
-playlist[0].volume = 0;
+playlist[0].volume = .5;
 
 function goThrough()
 {
