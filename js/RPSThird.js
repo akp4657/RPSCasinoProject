@@ -318,10 +318,26 @@ img draggable that represents a specific card value
                 {
                     if(playerCardPlayed=="scissors")
                     {
+                        anime({
+                            targets: '#dropzoneScissors',
+                            rotate:{
+                              value: '1turn',
+                              easing: 'easeInOutSine'
+                            },
+                            loop: 2
+                          });
                         WinRound();
                     }
                     if(playerCardPlayed=="lizard")
                     {
+                        anime({
+                            targets: '#dropzoneLizard',
+                            rotate:{
+                              value: '1turn',
+                              easing: 'easeInOutSine'
+                            },
+                            loop: 2
+                          }); 
                         WinRound();
                     }
                     if (playerCardPlayed=="rock")
@@ -336,11 +352,27 @@ img draggable that represents a specific card value
             else if(dealerCardPlayed=="scissors")
             {
                 if(playerCardPlayed=="rock")
-                {
+                { 
+                    anime({
+                    targets: '#dropzoneRock',
+                    rotate:{
+                      value: '1turn',
+                      easing: 'easeInOutSine'
+                    },
+                    loop: 2
+                  }); 
                     WinRound();
                 }
                 if(playerCardPlayed=="spock")
                 {
+                    anime({
+                        targets: '#dropzoneSpock',
+                        rotate:{
+                          value: '1turn',
+                          easing: 'easeInOutSine'
+                        },
+                        loop: 2
+                      }); 
                     WinRound();
                 }
                  if(playerCardPlayed =="paper" )
@@ -356,10 +388,26 @@ img draggable that represents a specific card value
             {
                 if(playerCardPlayed=="paper")
                 {
+                    anime({
+                        targets: '#dropzonePaper',
+                        rotate:{
+                          value: '1turn',
+                          easing: 'easeInOutSine'
+                        },
+                        loop: 2
+                      });  
                     WinRound();
                 }
                 if(playerCardPlayed=="spock")
                 {
+                    anime({
+                        targets: '#dropzoneSpock',
+                        rotate:{
+                          value: '1turn',
+                          easing: 'easeInOutSine'
+                        },
+                        loop: 2
+                      }); 
                     WinRound();
                 }
                 if (playerCardPlayed=="scissors")
@@ -375,10 +423,26 @@ img draggable that represents a specific card value
             {
                 if(playerCardPlayed=="paper")
                 {
+                    anime({
+                        targets: '#dropzonePaper',
+                        rotate:{
+                          value: '1turn',
+                          easing: 'easeInOutSine'
+                        },
+                        loop: 2
+                      });  
                     WinRound();
                 }
                 if(playerCardPlayed=="spock")
                 {
+                    anime({
+                        targets: '#dropzoneSpock',
+                        rotate:{
+                          value: '1turn',
+                          easing: 'easeInOutSine'
+                        },
+                        loop: 2
+                      }); 
                     WinRound();
                 }
                 if (playerCardPlayed=="scissors")
@@ -394,10 +458,26 @@ img draggable that represents a specific card value
             {
                 if(playerCardPlayed=="paper")
                 {
+                    anime({
+                        targets: '#dropzonePaper',
+                        rotate:{
+                          value: '1turn',
+                          easing: 'easeInOutSine'
+                        },
+                        loop: 2
+                      });  
                     WinRound();
                 }
                 if(playerCardPlayed=="lizard")
                 {
+                    anime({
+                        targets: '#dropzoneLizard',
+                        rotate:{
+                          value: '1turn',
+                          easing: 'easeInOutSine'
+                        },
+                        loop: 2
+                      }); 
                     WinRound();
                 }
                 if (playerCardPlayed=="scissors")

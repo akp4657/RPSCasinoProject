@@ -14,8 +14,13 @@
         <button class="btn" id="play"><a href="#">Notes</a></button>
     </div>
 
-    <audio id="phantom" controls autoplay loop>
+    <audio id="phantom" controls volume="0" autoplay loop>
         <source src="../audio/phantom.mp3" type="audio/mpeg">
     </audio>
+
+    <script>
+        let audio = document.getElementById("phantom");
+        audio.volume = .5;
+    </script>
 </body>
 </html>

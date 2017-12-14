@@ -102,8 +102,8 @@ body
 {
     border: 1px solid white;
     width: 10%;
-    height: 150px;
-    margin-top: -800px;
+    height: 160px;
+    margin-top: -1000px;
     padding-top: 10px;
     background: url("../images/redvelvet.svg");
     background-size: cover;
@@ -113,6 +113,10 @@ body
 {
     margin-left: 15px;
     height: 30px;
+}
+.btn:hover
+{
+    cursor: pointer;
 }
 
 #player
@@ -124,7 +128,6 @@ body
 
 #dealerRow
 {
-    border: 1px solid white;
     height: 300px;
     width: 50%;
     display: inline-block;
@@ -134,3 +137,30 @@ img
 {
     padding-left: 100px;
 }
+
+h2, p
+{
+    color: white;
+}
+
+p
+{
+    font-weight: normal;
+    font-size: 20px;
+}
+
+button
+{
+    width: 50px;
+}
+
+button:hover
+{
+    cursor: pointer;
+}
+
+#test:hover
+{
+    cursor: pointer;
+}
+
