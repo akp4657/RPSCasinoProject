@@ -16,8 +16,8 @@ img draggable that represents a specific card value
             cardNode = document.createElement("div")
             Graphic = document.createElement("img");
             //Setting style of card
-            Graphic.style.width="150px";
-            Graphic.style.height="200px";
+            Graphic.style.width="100px";
+            Graphic.style.height="150px";
             //img name variable
             let graphicSrc;
             if (this.choice == "rock") {

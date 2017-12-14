@@ -42,7 +42,7 @@ body
 }
 #dropzonePaper
 {
-    width: 10%; 
+    width: 13%; 
     height: 300px; 
     padding: 0.5em; 
     left: 50px;
@@ -50,12 +50,12 @@ body
     display: inline-block;
     vertical-align: middle;
     text-align: center;
-    margin-left: 100px;
+    margin-left: 50px;
     background: url("../images/redvelvet.svg");
     background-size: cover;
 }
 #dropzoneScissors{
-    width: 10%; 
+    width: 13%; 
     height: 300px; 
     padding: 0.5em; 
     left: 50px;
@@ -63,13 +63,13 @@ body
     display: inline-block;
     vertical-align: middle;
     text-align: center;
-    margin-left: 100px;
+    margin-left: 50px;
     background: url("../images/redvelvet.svg");
     background-size: cover;
 }
 #dropzoneRock
 {
-    width: 10%;
+    width: 13%;
     height: 300px; 
     padding: 0.5em; 
     left: 50px;
@@ -77,13 +77,13 @@ body
     display: inline-block;
     vertical-align: middle;
     text-align: center;
-    margin-left: 100px;
+    margin-left: 50px;
     background: url("../images/redvelvet.svg");
     background-size: cover;
 }
 
 #dropzoneLizard{
-    width: 10%; 
+    width: 13%; 
     height: 300px; 
     padding: 0.5em; 
     left: 50px;
@@ -91,13 +91,13 @@ body
     display: inline-block;
     vertical-align: middle;
     text-align: center;
-    margin-left: 100px;
+    margin-left: 50px;
     background: url("../images/redvelvet.svg");
     background-size: cover;
 }
 #dropzoneSpock
 {
-    width: 10%;
+    width: 13%;
     height: 300px; 
     padding: 0.5em; 
     left: 50px;
@@ -105,7 +105,7 @@ body
     display: inline-block;
     vertical-align: middle;
     text-align: center;
-    margin-left: 100px;
+    margin-left: 50px;
     background: url("../images/redvelvet.svg");
     background-size: cover;
 }
@@ -167,7 +167,12 @@ body
 
 img
 {
-    padding-left: 5px;
+    padding-left: 15px;
+}
+
+img:hover
+{
+    cursor: pointer;
 }
 
 h2, p
