@@ -1,6 +1,14 @@
 
 /*Css for row of dealer cards
 */
+
+body 
+{
+    background: url("../images/gamebackground.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+}
 .dealerCards::after
 {
     content: ",";
@@ -38,22 +46,26 @@
     height: 300px; 
     padding: 0.5em; 
     left: 50px;
-    border: 1px solid black;
+    border: 3px solid white;
     display: inline-block;
     vertical-align: middle;
     text-align: center;
     margin-left: 100px;
+    background: url("../images/redvelvet.svg");
+    background-size: cover;
 }
 #dropzoneScissors{
     width: 22%; 
     height: 300px; 
     padding: 0.5em; 
     left: 50px;
-    border: 1px solid black;
+    border: 3px solid white;
     display: inline-block;
     vertical-align: middle;
     text-align: center;
     margin-left: 100px;
+    background: url("../images/redvelvet.svg");
+    background-size: cover;
 }
 #dropzoneRock
 {
@@ -61,11 +73,13 @@
     height: 300px; 
     padding: 0.5em; 
     left: 50px;
-    border: 1px solid black;
+    border: 3px solid white;
     display: inline-block;
     vertical-align: middle;
     text-align: center;
     margin-left: 100px;
+    background: url("../images/redvelvet.svg");
+    background-size: cover;
 }
 
 .container{
@@ -86,11 +100,13 @@
 
 #gamebuttons
 {
-    border: 1px solid black;
+    border: 1px solid white;
     width: 10%;
     height: 150px;
-    margin-top: -200px;
+    margin-top: -800px;
     padding-top: 10px;
+    background: url("../images/redvelvet.svg");
+    background-size: cover;
 }
 
 .btn
@@ -108,7 +124,7 @@
 
 #dealerRow
 {
-    border: 1px solid black;
+    border: 1px solid white;
     height: 300px;
     width: 50%;
     display: inline-block;

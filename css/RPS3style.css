@@ -1,14 +1,21 @@
-#dealer
-{
 
-}
 /*Css for row of dealer cards
 */
+
+body 
+{
+    background: url("../images/gamebackground.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+}
 .dealerCards::after
 {
     content: ",";
-    display: table;
     clear: both;
+    height: 200px;
+    width: 500px;
+    border: 1px solid black;
 }
 .ui-widget-content
 {
@@ -22,8 +29,9 @@
 {
     
     content: ",";
-    display: table;
+    display: inline-block;
     clear: both;
+    padding-top: 100px;
 }
 /*Css for row dropzone*/
 .row::after
@@ -34,55 +42,122 @@
 }
 #dropzonePaper
 {
-    float: left;
-    width: 20%; 
+    width: 10%; 
     height: 300px; 
     padding: 0.5em; 
-    position: relative;
     left: 50px;
-    margin: 10px;
-    border: 1px solid black;
+    border: 3px solid white;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 100px;
+    background: url("../images/redvelvet.svg");
+    background-size: cover;
 }
 #dropzoneScissors{
-    float: left;
-    width: 20%; 
+    width: 10%; 
     height: 300px; 
     padding: 0.5em; 
-    position: relative;
     left: 50px;
-    margin: 10px;
-    border: 1px solid black;
+    border: 3px solid white;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 100px;
+    background: url("../images/redvelvet.svg");
+    background-size: cover;
 }
 #dropzoneRock
 {
-    float: left;
-    width: 20%;
+    width: 10%;
     height: 300px; 
     padding: 0.5em; 
-    position: relative;
     left: 50px;
-    margin: 10px;
-    border: 1px solid black;
+    border: 3px solid white;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 100px;
+    background: url("../images/redvelvet.svg");
+    background-size: cover;
 }
-#dropzoneLizard
-{ float: left;
-    width: 20%;
-    height: 300px; 
-    padding: 0.5em; 
-    position: relative;
-    left: 50px;
-    margin: 10px;
-    border: 1px solid black;
 
-}
-#dropzoneSpock
-{
-    float: left;
-    width: 20%;
+#dropzoneLizard{
+    width: 10%; 
     height: 300px; 
     padding: 0.5em; 
-    position: relative;
     left: 50px;
-    margin: 10px;
-    border: 1px solid black;
+    border: 3px solid white;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 100px;
+    background: url("../images/redvelvet.svg");
+    background-size: cover;
+}
+#dropZoneSpock
+{
+    width: 10%;
+    height: 300px; 
+    padding: 0.5em; 
+    left: 50px;
+    border: 3px solid white;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 100px;
+    background: url("../images/redvelvet.svg");
+    background-size: cover;
+}
+.container{
+    height: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.row
+{
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 5px;
+    white-space: nowrap;
+}
+
+#gamebuttons
+{
+    border: 1px solid white;
+    width: 10%;
+    height: 150px;
+    margin-top: -800px;
+    padding-top: 10px;
+    background: url("../images/redvelvet.svg");
+    background-size: cover;
+}
+
+.btn
+{
+    margin-left: 15px;
+    height: 30px;
+}
+
+#player
+{
+    height: 300px;
+    width: 50%;
+    display: inline-block;
+}
+
+#dealerRow
+{
+    border: 1px solid white;
+    height: 300px;
+    width: 50%;
+    display: inline-block;
+}
+
+img
+{
+    padding-left: 5px;
 }

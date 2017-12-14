@@ -15,11 +15,12 @@ audio
 {
     margin-left: 15%;
     margin-top: 20%;
-    padding-bottom: 20px;
-    border: 1px solid black;
+    padding-bottom: 10px;
     width: 20%;
     height: 200px;
-    background-color: red;
+    background: url("../images/title.svg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 button
@@ -27,11 +28,20 @@ button
     display: block;
     margin: auto;
     padding: 2px;
+    transition: 1s;
+}
+
+button:hover
+{
+    background-color: #009900;
+    transition: 1s;
+    color: white;
 }
 
 h1
 {
     text-align: center;
+    padding-top: 15px;
 }
 
 input
